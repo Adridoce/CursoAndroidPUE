@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ExplicitApp</string>
+    <string name="main_activity_btn_send">send text</string>
+    <string name="second_activity_btn_text">Devolver mensaje</string>
+</resources>
