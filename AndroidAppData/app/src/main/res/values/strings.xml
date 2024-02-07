@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AndroidAppData</string>
+    <string name="activity_main_alt_text">Icono de comentario</string>
+    <string name="activity_main_tv_text">Data message</string>
+    <string name="activity_main_et_text">Nombre</string>
+    <string name="activity_main_btn_accept">Aceptar</string>
+    <string name="activity_main_make_sure">Make Sure</string>
+</resources>

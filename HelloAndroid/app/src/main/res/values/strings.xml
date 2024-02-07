@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">HelloAndroid</string>
+    <string name="activity_main_tv">Hola Android</string>
+    <string name="activity_main_btn_convert">Convertir</string>
+    <string name="activity_main_et_dollar_hint">Introduce cantidad</string>
+    <string name="activity_main_no_data">Sin datos</string>
+</resources>

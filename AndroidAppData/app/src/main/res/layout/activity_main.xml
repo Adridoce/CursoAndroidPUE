@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="@color/dark_sea_green"
+    android:gravity="center_horizontal|center_vertical"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/main_activity_iv_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/tea_green"
+        android:contentDescription="@string/activity_main_alt_text"
+        app:srcCompat="@drawable/img_logo" />
+
+    <TextView
+        android:id="@+id/main_activity_tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/activity_main_tv_text"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/main_activity_et_text"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="16dp"
+        android:backgroundTint="@color/white"
+        android:hint="@string/activity_main_et_text"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:id="@+id/main_activity_btn_accept"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="@string/activity_main_btn_accept"
+        android:textSize="24sp" />
+
+</LinearLayout>

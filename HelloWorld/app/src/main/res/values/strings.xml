@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Hello World</string>
+    <string name="saludo">Hola Android</string>
+    <string name="btnsaludo">Saludar</string>
+    <string name="etNombre">Nombre</string>
+    <string name="activity_main_btn_data_a">Obtener dato A</string>
+    <string name="activity_main_btn_data_b">Obtener dato B</string>
+    <string name="activity_main_btn_10">Boton 10</string>
+    <string name="activity_main_btn_11">Boton 11</string>
+    <string name="activity_main_btn_12">Boton 12</string>
+</resources>
