@@ -5,7 +5,9 @@ import android.Manifest.permission.POST_NOTIFICATIONS
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -83,10 +85,18 @@ class MainActivity : AppCompatActivity() {
         val channelId = "com.cursoandroid.notificationapp.news"
         val notificationId = 1001
 
+        val intent = Intent(this, SecondActivity::class.java)
+
+        val pendingIntent = PendingIntent.getActivity(this, 0,
+                                                        intent, PendingIntent.FLAG_IMMUTABLE)
+
         val notification = Notification.Builder(this@MainActivity, channelId)
             .setContentTitle("Notificacion sesion Android")
             .setContentText("Info de la sesion de Android")
-            .setSmallIcon(android.R.drawable.ic_dialog_info).setChannelId(channelId).build()
+            .setSmallIcon(android.R.drawable.ic_dialog_info)
+            .setChannelId(channelId)
+            .setContentIntent(pendingIntent)
+            .build()
 
         notificationManager?.notify(notificationId, notification)
     }
