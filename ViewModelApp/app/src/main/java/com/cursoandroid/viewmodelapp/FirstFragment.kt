@@ -14,14 +14,29 @@ class FirstFragment : Fragment() {
     private lateinit var viewModel: FirstViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         binding = FragmentFirstBinding.inflate(inflater, container, false)
+        //Creacion de viewmodel
+        viewModel = ViewModelProvider(this).get(FirstViewModel::class.java)
+        // Vinculacion del viewmodel
+        binding.firstViewModel = viewModel
+        binding.lifecycleOwner = this
 
-        viewModel = ViewModelProvider()
+        // click listeners
+        binding.firstFragmentBtHello.setOnClickListener {
+            viewModel.hello(binding.firstFragmentEtName.text.toString())
+        }
 
+        binding.firstFragmentBtGoodbye.setOnClickListener {
+            viewModel.goodbye(binding.firstFragmentEtName.text.toString())
+        }
+
+        binding.firstFragmentBtEnd.setOnClickListener {
+
+        }
 
         return binding.root
     }
