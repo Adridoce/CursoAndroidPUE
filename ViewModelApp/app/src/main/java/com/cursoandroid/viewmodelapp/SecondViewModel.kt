@@ -10,7 +10,7 @@ class SecondViewModel(var passedClicks: Int): ViewModel() {
     val clicks: LiveData<Int> get() = _clicks
 
     init {
-        _clicks.value = passedClicks + 1
+        _clicks.value = passedClicks
     }
 
     fun addClick() {

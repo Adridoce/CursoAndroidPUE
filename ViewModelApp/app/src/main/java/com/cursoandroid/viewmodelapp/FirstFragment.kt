@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.cursoandroid.viewmodelapp.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
@@ -35,12 +36,19 @@ class FirstFragment : Fragment() {
         }
 
         binding.firstFragmentBtEnd.setOnClickListener {
-
+            goSecondFragment()
         }
 
         return binding.root
     }
 
+    private fun goSecondFragment() {
+        findNavController().navigate(
+            FirstFragmentDirections.actionFirstFragmentToSecondFragment(
+                viewModel.clicks.value!!
+            )
+        )
+    }
 
 
 }
