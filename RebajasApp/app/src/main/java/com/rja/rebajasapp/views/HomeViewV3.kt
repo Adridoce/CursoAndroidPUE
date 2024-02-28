@@ -1,6 +1,5 @@
 package com.rja.rebajasapp.views
 
-import android.widget.Space
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,26 +11,20 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.rja.rebajasapp.components.Alert
 import com.rja.rebajasapp.components.MainButton
 import com.rja.rebajasapp.components.MainTextField
 import com.rja.rebajasapp.components.SpaceH
 import com.rja.rebajasapp.components.TwoCards
-import com.rja.rebajasapp.viewModels.CalcularViewModel
-
+import com.rja.rebajasapp.viewModels.CalcularViewModelV3
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeView(paddingValues: PaddingValues, viewModel: CalcularViewModel) {
+fun HomeViewV3(paddingValues: PaddingValues, viewModel: CalcularViewModelV3) {
     Scaffold(topBar = {
         CenterAlignedTopAppBar(
             title = { Text(text = "App Rebajas", color = Color.White) },
@@ -40,12 +33,12 @@ fun HomeView(paddingValues: PaddingValues, viewModel: CalcularViewModel) {
             )
         )
     }) {
-        ContentHomeView(paddingValues = it, viewModel = viewModel)
+        ContentHomeViewV3(paddingValues = it, viewModel = viewModel)
     }
 }
 
 @Composable
-fun ContentHomeView(paddingValues: PaddingValues, viewModel: CalcularViewModel) {
+fun ContentHomeViewV3(paddingValues: PaddingValues, viewModel: CalcularViewModelV3) {
     Column(
         modifier = Modifier
             .padding(paddingValues)
@@ -54,46 +47,46 @@ fun ContentHomeView(paddingValues: PaddingValues, viewModel: CalcularViewModel) 
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        var precio by remember { mutableStateOf("") }
-        var descuento by remember { mutableStateOf("") }
-        var precioDescuento by remember { mutableStateOf(0.0) }
-        var totalDescuento by remember { mutableStateOf(0.0) }
-        var showAlerta by remember { mutableStateOf(false) }
+        val state = viewModel.state
 
         TwoCards(
             title1 = "Total",
-            number1 = totalDescuento,
+            number1 = state.totalDescuento,
             title2 = "Descuento",
-            number2 = precioDescuento
+            number2 = state.precioDescuento
         )
 
-        MainTextField(value = precio, onValueChange = { precio = it }, label = "Precio")
+        MainTextField(
+            value = state.precio,
+            onValueChange = { viewModel.onValue(it, "precio") },
+            label = "Precio"
+        )
+
         SpaceH()
-        MainTextField(value = descuento, onValueChange = { descuento = it }, label = "Descuento %")
+
+        MainTextField(
+            value = state.descuento,
+            onValueChange = { viewModel.onValue(it, "descuento") },
+            label = "Descuento %"
+        )
+
         SpaceH(10.dp)
+
         MainButton(text = "Generar descuento") {
-
-            val result = viewModel.calcular(precio, descuento)
-            showAlerta = result.second.second
-            if (!showAlerta) {
-                precioDescuento = result.first
-                totalDescuento = result.second.first
-            }
+            viewModel.calcular()
         }
+
         SpaceH()
+
         MainButton(text = "Limpiar campos") {
-            precio = ""
-            descuento = ""
-            precioDescuento = 0.0
-            totalDescuento = 0.0
+            viewModel.limpiar()
         }
 
-        if (showAlerta) {
-            Alert(
-                title = "Aviso",
+        if (state.showAlert) {
+            Alert(title = "Aviso",
                 message = "Informar del precio y/o descuento",
                 confirmText = "Aceptar",
-                onConfirmClick = { showAlerta = false }) {
+                onConfirmClick = { viewModel.cancelAlert() }) {
 
             }
         }

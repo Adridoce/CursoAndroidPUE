@@ -31,7 +31,7 @@ fun TwoCards(title1: String, number1: Double, title2: String, number2: Double) {
                 .padding(start = 30.dp)
                 .weight(1f)
         )
-        Spacer(modifier = Modifier.padding(7.dp))
+        SpaceW()
         MainCard(
             title2,
             number2,
