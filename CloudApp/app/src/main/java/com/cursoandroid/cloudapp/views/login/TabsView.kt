@@ -13,10 +13,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.navigation.NavController
 import com.cursoandroid.cloudapp.viewmodels.LoginViewModel
 
 @Composable
-fun TabsView(loginVM: LoginViewModel) {
+fun TabsView(navController: NavController, loginVM: LoginViewModel) {
     var selectedTab by remember { mutableStateOf(0) }
     val tabs = listOf("Login", "Registro")
 
@@ -42,7 +43,7 @@ fun TabsView(loginVM: LoginViewModel) {
             }
         }
         when(selectedTab) {
-            0 -> LoginView(loginVM)
+            0 -> LoginView(navController, loginVM)
             1 -> RegisterView(loginVM)
         }
     }

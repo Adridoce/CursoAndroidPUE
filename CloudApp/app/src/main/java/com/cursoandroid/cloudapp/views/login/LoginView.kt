@@ -21,11 +21,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.cursoandroid.cloudapp.components.Alert
 import com.cursoandroid.cloudapp.viewmodels.LoginViewModel
 
 @Composable
-fun LoginView(loginVM: LoginViewModel) {
+fun LoginView(navController: NavController, loginVM: LoginViewModel) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
@@ -60,6 +61,7 @@ fun LoginView(loginVM: LoginViewModel) {
             onClick = {
                 loginVM.login(email, password) {
                     Log.i("apu", "Login correcto")
+                    navController.navigate("Home")
                 }
             }, modifier = Modifier
                 .fillMaxWidth()
