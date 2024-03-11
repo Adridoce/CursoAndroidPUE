@@ -45,7 +45,7 @@ fun CardNote(
                 Icon(imageVector = Icons.Default.Edit, contentDescription = "")
             }
         }
-        Divider()
+            Divider()
         if (showAlert) {
             Alert(title = title,
                 message = note,
